@@ -7,6 +7,8 @@ const GoogleLoginWrapper = () => {
   const [info, setInfo] = useState(null);
 
   useEffect(() => {
+    console.log(`process.env.GOOGLE_CLIENT_IT`, process.env.GOOGLE_CLIENT_IT);
+
     authTesting();
   }, [])
 
