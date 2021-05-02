@@ -1,10 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GoogleLogin from 'react-google-login';
 
 import axios from 'axios';
 
 const GoogleLoginWrapper = () => {
   const [info, setInfo] = useState(null);
+
+  useEffect(() => {
+    authTesting();
+  }, [])
+
+  async function authTesting() {
+    const { data } = await axios.post('/.netlify/functions/google-auth-login', { idToken: '1234' });
+    setInfo(data.message);
+    console.log(`data.idToken`, data.idToken);
+  }
 
   async function handleLoginSuccess(googleUser) {
     console.log('login success');
