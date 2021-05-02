@@ -7,18 +7,8 @@ const GoogleLoginWrapper = () => {
   const [info, setInfo] = useState(null);
 
   useEffect(() => {
-    console.log(`process.env.GOOGLE_CLIENT_ID`, process.env.REACT_APP_GOOGLE_CLIENT_ID);
-    console.log(`process.env.TEST`, process.env.TEST);
-    console.log(`process.env.REACT_APP_TEST`, process.env.REACT_APP_TEST);
 
-    authTesting();
   }, [])
-
-  async function authTesting() {
-    const { data } = await axios.post('/.netlify/functions/google-auth-login', { idToken: '1234' });
-    setInfo(data.message);
-    console.log(`data.idToken`, data.idToken);
-  }
 
   async function handleLoginSuccess(googleUser) {
     console.log('login success');
@@ -29,14 +19,15 @@ const GoogleLoginWrapper = () => {
     console.log(`idToken`, idToken);
 
     const { data } = await axios.post('/.netlify/functions/google-auth-login', { idToken });
+    // function needs to check if user exists and return a user type 'admin' | 'therapist' | 'patient' | 'unset'
+    // save the usertype to app state and redirect to the appropriate page
+    // 'unset' sends you to a screen where you get to select 'therapist' OR 'patient' and save to DB, then redirect accordingly
 
     setInfo(data.message);
-    console.log(`data.idToken`, data.idToken);
   }
 
   function handleLoginFailure(error) {
-    console.log('login failed');
-    console.log(`error`, error);
+    console.warn('Login failed!');
     console.log(error.details)
   }
 

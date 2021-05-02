@@ -7,6 +7,7 @@ import './App.css';
 function App() {
 
   function handleLogoutSuccess(response) {
+    // redirect to home page
     console.log('logout success');
     console.log(`response`, response);
   }
@@ -15,6 +16,11 @@ function App() {
     console.log('logout failure');
     console.log(`response`, response);
   }
+
+  // TODO -> add redux toolkit and create an auth slice
+  // TODO -> conditionally render logout button, if user is logged in
+  // TODO -> put logout button inside a wrapper that contains the logic
+  
 
   return (
     <div className="App">
