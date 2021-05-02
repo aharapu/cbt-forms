@@ -1,21 +1,10 @@
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
+
+import GoogleLoginWrapper from 'components/shared/GoogleLoginWrapper/GoogleLoginWrapper';
 
 import './App.css';
 
 function App() {
-
-  function handleLoginSuccess(googleUser) {
-    console.log('login success');
-
-    const profile = googleUser.getBasicProfile();
-    console.log('Email: ' + profile.getEmail());
-  }
-
-  function handleLoginFailure(error) {
-    console.log('login failed');
-    console.log(`error`, error);
-    console.log(error.details)
-  }
 
   function handleLogoutSuccess(response) {
     console.log('logout success');
@@ -33,14 +22,7 @@ function App() {
         <p>
           CBT-app.
         </p>
-        <GoogleLogin
-          clientId="960101545622-6b9nlu0b08d1qsvjitv7cv7lhoilodfo.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={handleLoginSuccess}
-          onFailure={handleLoginFailure}
-          // cookiePolicy={'single_host_origin'}
-          // isSignedIn={false}
-        />
+        <GoogleLoginWrapper />
         <GoogleLogout
           clientId="960101545622-6b9nlu0b08d1qsvjitv7cv7lhoilodfo.apps.googleusercontent.com"
           buttonText="Logout"
