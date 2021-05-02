@@ -26,5 +26,5 @@ yarn-error.log*
 .netlify
 
 # Env vars
-.env
 .env.dev
+.env

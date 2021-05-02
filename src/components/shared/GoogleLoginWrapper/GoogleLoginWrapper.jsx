@@ -8,6 +8,8 @@ const GoogleLoginWrapper = () => {
 
   useEffect(() => {
     console.log(`process.env.GOOGLE_CLIENT_ID`, process.env.GOOGLE_CLIENT_ID);
+    console.log(`process.env.TEST`, process.env.TEST);
+    console.log(`process.env.REACT_APP_TEST`, process.env.REACT_APP_TEST);
 
     authTesting();
   }, [])
