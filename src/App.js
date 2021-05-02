@@ -24,7 +24,7 @@ function App() {
         </p>
         <GoogleLoginWrapper />
         <GoogleLogout
-          clientId="960101545622-6b9nlu0b08d1qsvjitv7cv7lhoilodfo.apps.googleusercontent.com"
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
           buttonText="Logout"
           onLogoutSuccess={handleLogoutSuccess}
           onFailure={handleLogoutFailure}

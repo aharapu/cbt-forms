@@ -7,7 +7,7 @@ const GoogleLoginWrapper = () => {
   const [info, setInfo] = useState(null);
 
   useEffect(() => {
-    console.log(`process.env.GOOGLE_CLIENT_ID`, process.env.GOOGLE_CLIENT_ID);
+    console.log(`process.env.GOOGLE_CLIENT_ID`, process.env.REACT_APP_GOOGLE_CLIENT_ID);
     console.log(`process.env.TEST`, process.env.TEST);
     console.log(`process.env.REACT_APP_TEST`, process.env.REACT_APP_TEST);
 
@@ -43,7 +43,7 @@ const GoogleLoginWrapper = () => {
   return (
     <>
       <GoogleLogin
-        clientId="960101545622-6b9nlu0b08d1qsvjitv7cv7lhoilodfo.apps.googleusercontent.com"
+        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
         buttonText="Login"
         onSuccess={handleLoginSuccess}
         onFailure={handleLoginFailure}
