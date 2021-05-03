@@ -2,7 +2,7 @@ const {OAuth2Client} = require('google-auth-library');
 const { MongoClient } = require("mongodb");
 
 const googleClient = new OAuth2Client(process.env.REACT_APP_GOOGLE_CLIENT_ID);
-const mongoClient = new MongoClient(process.env.MONGODB_URL);
+const mongoClient = new MongoClient(process.env.MONGODB_URL, { useUnifiedTopology: true });
 
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 const handler = async (event) => {
@@ -18,7 +18,7 @@ const handler = async (event) => {
     const userId = payload['sub'];
 
     await mongoClient.connect();
-    const db = mongoClient.db('cbt-forms-users');
+    const db = mongoClient.db('cbt-forms-app');
     const collection = db.collection('cbt-forms-users');
     const doc = { name: payload.name, email: payload.email };
 
@@ -32,6 +32,7 @@ const handler = async (event) => {
       body: JSON.stringify({ 
         userId,
         payload,
+        result,
       }),  
     }
   } catch (error) {

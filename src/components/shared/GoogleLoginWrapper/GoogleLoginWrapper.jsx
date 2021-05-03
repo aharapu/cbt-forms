@@ -23,6 +23,7 @@ const GoogleLoginWrapper = () => {
     // 'unset' sends you to a screen where you get to select 'therapist' OR 'patient' and save to DB, then redirect accordingly
 
     console.log(`data.userId`, data.userId);
+    console.log(`data.result`, data.result);
     setInfo(data.payload);
   }
 
