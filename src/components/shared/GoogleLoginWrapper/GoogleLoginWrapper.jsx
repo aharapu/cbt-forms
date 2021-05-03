@@ -21,15 +21,17 @@ const GoogleLoginWrapper = () => {
     // function needs to check if user exists and return a user type 'admin' | 'therapist' | 'patient' | 'unset'
     // save the usertype to app state and redirect to the appropriate page
     // 'unset' sends you to a screen where you get to select 'therapist' OR 'patient' and save to DB, then redirect accordingly
-    console.log(`data.envGoogleId`, data.envGoogleId);
 
-    setInfo(data.message);
+    console.log(`data.userId`, data.userId);
+    setInfo(data.payload);
   }
 
   function handleLoginFailure(error) {
     console.warn('Login failed!');
     console.log(error.details)
   }
+
+  if (info) console.log(`info`, info);
 
   return (
     <>
@@ -41,7 +43,6 @@ const GoogleLoginWrapper = () => {
       />
       <div>
         <h6>server response</h6>
-        <p>{info}</p>
       </div>
     </>
   );
