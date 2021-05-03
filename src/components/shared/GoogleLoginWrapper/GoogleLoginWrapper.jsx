@@ -11,17 +11,17 @@ const GoogleLoginWrapper = () => {
   }, [])
 
   async function handleLoginSuccess(googleUser) {
-    console.log('login success');
+    console.log('Login success!');
 
     const profile = googleUser.getBasicProfile();
     console.log('Email: ' + profile.getEmail());
     var idToken = googleUser.getAuthResponse().id_token;
-    console.log(`idToken`, idToken);
 
     const { data } = await axios.post('/.netlify/functions/google-auth-login', { idToken });
     // function needs to check if user exists and return a user type 'admin' | 'therapist' | 'patient' | 'unset'
     // save the usertype to app state and redirect to the appropriate page
     // 'unset' sends you to a screen where you get to select 'therapist' OR 'patient' and save to DB, then redirect accordingly
+    console.log(`data.envGoogleId`, data.envGoogleId);
 
     setInfo(data.message);
   }
